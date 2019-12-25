@@ -1,41 +1,84 @@
-const obj = {name: 'мечник', health: 10, level: 2, attack: 80, defence: 40}
-let orderArr = {};
-let finalArr = [];
-let abcArr = [];
+class Character {
+  constructor (name) {
+    this.name = name;
+    this.health = 100;
+  }
+}
 
-function orderByProps(obj, arr) {
-    for (let property in obj) {
-      for (let prop in arr) {
-          let item = arr[prop];
-          if (property == item) {
-            orderArr[property] = obj[property];
-            delete obj[property];
-          }
-      }
+class Bowman extends Character {
+  constructor(name) {
+    super(name);
+    this.attack = 25;
+    this.defence = 25;
+  }
+}
+
+class Swordman extends Character {
+  constructor(name) {
+    super(name);
+    this.attack = 40;
+    this.defence = 10;
+  }
+}
+
+class Magician extends Character {
+  constructor(name) {
+    super(name);
+    this.attack = 10;
+    this.defence = 40;
+  }
+}
+
+class Undead extends Character {
+  constructor(name) {
+    super(name);
+    this.attack = 25;
+    this.defence = 25;
+  }
+}
+
+class Zombie extends Character {
+  constructor(name) {
+    super(name);
+    this.attack = 40;
+    this.defence = 10;
+  }
+}
+
+class Demon extends Character {
+  constructor(name) {
+    super(name);
+    this.attack = 10;
+    this.defence = 40;
+  }
+}
+
+
+class Team {
+    constructor() {
+        this.members = new Set();
+
     }
 
-    for (let order in orderArr) {
-      finalArr.push({key: order, value: orderArr[order]});
+    add(person) {
+      const newPerson = new person ('Misha');
+      this.members.add(newPerson);
+      return this.members;
     }
 
-    for (let abc in obj) {
-      abcArr.push({key: abc, value: obj[abc]});
-      abcArr.sort(function(a, b){
-        let nameA=a.key.toLowerCase(), nameB=b.key.toLowerCase()
-        if (nameA < nameB)
-          return -1
-        if (nameA > nameB)
-          return 1
-        return 0
-        })
+    addAll() {
+
     }
+
+    toArray() {
     
-    obj = finalArr.concat(abcArr);
-    
-    return obj;
+    }
 
-}    
+}
 
-console.log(orderByProps(obj, ['name','level']));
+const newTeam = new Team ();
 
-export {orderByProps, obj};
+newTeam.add(Demon);
+newTeam.add(Zombie);
+
+console.log(newTeam);
