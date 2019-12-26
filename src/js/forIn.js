@@ -67,7 +67,11 @@ class Team {
     }
 
     addAll() {
-
+      for (let person of persons) {
+        const newPerson = new person ('Misha');
+        this.members.add(newPerson);
+      }
+      return this.members;
     }
 
     toArray() {
