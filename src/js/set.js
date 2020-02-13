@@ -29,7 +29,7 @@ class Magician extends Character {
   }
 }
 
-class Undead extends Character {
+export class Undead extends Character {
   constructor(name) {
     super(name);
     this.attack = 25;
@@ -37,7 +37,7 @@ class Undead extends Character {
   }
 }
 
-class Zombie extends Character {
+export class Zombie extends Character {
   constructor(name) {
     super(name);
     this.attack = 40;
@@ -45,7 +45,7 @@ class Zombie extends Character {
   }
 }
 
-class Demon extends Character {
+export class Demon extends Character {
   constructor(name) {
     super(name);
     this.attack = 10;
@@ -53,11 +53,11 @@ class Demon extends Character {
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////////
 
 class Team {
     constructor() {
-        this.members = new Set();
-
+      this.members = new Set();
     }
 
     add(person) {
@@ -66,7 +66,7 @@ class Team {
       return this.members;
     }
 
-    addAll() {
+    addAll(...persons) {
       for (let person of persons) {
         const newPerson = new person ('Misha');
         this.members.add(newPerson);
@@ -75,14 +75,16 @@ class Team {
     }
 
     toArray() {
-    
+      const arrPersons = [];
+      for (let value of this.members) {
+        arrPersons.push(value);
+      }
+      return arrPersons;
     }
 
 }
 
-const newTeam = new Team ();
+export const newTeam = new Team ();
 
-newTeam.add(Demon);
-newTeam.add(Zombie);
 
-console.log(newTeam);
+
